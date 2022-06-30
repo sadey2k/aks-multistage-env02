@@ -21,7 +21,7 @@ resource "azurerm_log_analytics_workspace" "sadey2kworkspace" {
 }
 
 #################################################
-## Create cluster  ##
+## Key vault values  ##
 #################################################
 data "azurerm_key_vault" "azure_vault" {
   name                = var.keyvault_name
@@ -42,12 +42,24 @@ data "azurerm_key_vault_secret" "spn_secret" {
   key_vault_id = data.azurerm_key_vault.azure_vault.id
 }
 
+data "azurerm_key_vault_secret" "sa_access_key" {
+  name = var.access_key
+  key_vault_id = data.azurerm_key_vault.azure_vault.id
+}
 
+#################################################
+## Create cluster  ##
+#################################################
 resource "azurerm_kubernetes_cluster" "k8s" {
     name                = "${var.aks_cluster_name}-${var.tags}"
     location            = var.location
     resource_group_name = var.aks_rg_name
-    dns_prefix          = var.dns_prefix
+    dns_prefix          = "${var.dns_prefix}-${var.tags}"
+
+    depends_on = [
+      azurerm_resource_group.pipeline-aks-rg
+    ]
+    
 
     linux_profile {
         admin_username = "ubuntu"
