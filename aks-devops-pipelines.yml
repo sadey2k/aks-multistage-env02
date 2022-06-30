@@ -10,23 +10,24 @@ pool: 'TestAgentPool'
   #vmImage: 
 
 steps:
-# - task: TerraformCLI@0
-#   inputs:
-#     command: 'init'
-#     backendType: 'azurerm'
-#     backendServiceArm: 'sadey2k-aks-sp'
-#     backendAzureRmSubscriptionId: 'c88c8f23-28fa-446c-9737-a0a749bb194f'
-#     backendAzureRmResourceGroupName: 'sadey2k-backendRG'
-#     backendAzureRmStorageAccountName: 'sadey2ksa'
-#     backendAzureRmContainerName: 'tfstate'
-#     backendAzureRmKey: 'iH8Y1hp27kzotxe6JQTHIE8UqslHSLV9X6XhNfbZs9Po8tRgkbVjQ//rvSD6kvsZOSo1FksvYeIX+ASt9uFHog=='
-#     allowTelemetryCollection: false
-
 - task: TerraformCLI@0
-  displayName: Terraform Init
   inputs:
     command: 'init'
+    workingDirectory: '$(System.DefaultWorkingDirectory)/tf-infra'
+    backendType: 'azurerm'
+    backendServiceArm: 'sadey2k-aks-sp'
+    backendAzureRmSubscriptionId: 'c88c8f23-28fa-446c-9737-a0a749bb194f'
+    backendAzureRmResourceGroupName: 'sadey2k-backendRG'
+    backendAzureRmStorageAccountName: 'sadey2ksa'
+    backendAzureRmContainerName: 'tfstate'
+    backendAzureRmKey: 'tfstate-pipeline-QA'
     allowTelemetryCollection: false
+
+# - task: TerraformCLI@0
+#   displayName: Terraform Init
+#   inputs:
+#     command: 'init'
+#     allowTelemetryCollection: false
 
 - task: TerraformCLI@0
   displayName: Terraform Plan
