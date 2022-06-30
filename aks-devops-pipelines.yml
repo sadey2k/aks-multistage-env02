@@ -35,3 +35,11 @@ steps:
     command: 'plan'
     workingDirectory: '$(System.DefaultWorkingDirectory)/tf-infra'
     allowTelemetryCollection: false
+
+- task: TerraformCLI@0
+  inputs:
+    command: 'apply'
+    workingDirectory: '$(System.DefaultWorkingDirectory)/tf-infra'
+    environmentServiceName: 'sadey2k-aks-sp'
+    providerAzureRmSubscriptionId: 'c88c8f23-28fa-446c-9737-a0a749bb194f'
+    allowTelemetryCollection: false
