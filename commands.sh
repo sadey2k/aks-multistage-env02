@@ -7,7 +7,7 @@ TENANT_ID="375b0336-a057-4ecb-b117-e02bf5b9a1a9"
 SUBSCRIPTION="c88c8f23-28fa-446c-9737-a0a749bb194f"
 BACKEND_RG_NAME="sadey2k-backendRG"
 STORAGE_ACCOUNT_NAME="sadey2ksa"
-STORAGE_ACCOUNT_KEY="iH8Y1hp27kzotxe6JQTHIE8UqslHSLV9X6XhNfbZs9Po8tRgkbVjQ//rvSD6kvsZOSo1FksvYeIX+ASt9uFHog=="
+STORAGE_ACCOUNT_KEY=
 CONTAINER_NAME="tfstate"
 INFRA_RG_NAME="sadey2k-aksRG"
 RESOURCE_GROUP_LOCATION="ukwest"
@@ -72,8 +72,8 @@ az acr create -n $ACR_NAME -g $INFRA_RG_NAME --sku basic --tags $TAG
 
 az ad sp create-for-rbac --name $SPN_NAME --skip-assignment 
 
-AKS_CLIENT_ID="5a8cc7d2-17df-4bf4-ad32-665c5ff54ccb"
-AKS_CLIENT_SECRET="XrTXQd.pKDEm5_ZUj17bLRAiC2zRfw9xL3"
+AKS_CLIENT_ID=
+AKS_CLIENT_SECRET=
 az keyvault secret set --vault-name $KEYVAULT_NAME --name "aks-sp2-id" --value "$AKS_CLIENT_ID"
 az keyvault secret set --vault-name $KEYVAULT_NAME --name "aks-sp2-secret" --value "$AKS_CLIENT_SECRET"
 
