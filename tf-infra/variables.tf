@@ -47,7 +47,7 @@ variable "tags" {
 }
 
 variable "access_key" {
-
+  default = "backend-sa-access-key"
 }
 
 variable "keyvault_rg" {
