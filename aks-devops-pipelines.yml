@@ -30,13 +30,6 @@ steps:
 #     allowTelemetryCollection: false
 
 - task: TerraformCLI@0
-  displayName: Terraform Plan
-  inputs:
-    command: 'plan'
-    workingDirectory: '$(System.DefaultWorkingDirectory)/tf-infra'
-    allowTelemetryCollection: false
-
-- task: TerraformCLI@0
   inputs:
     command: 'apply'
     workingDirectory: '$(System.DefaultWorkingDirectory)/tf-infra'
