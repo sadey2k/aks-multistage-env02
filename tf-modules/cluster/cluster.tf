@@ -53,13 +53,8 @@ data "azurerm_key_vault_secret" "sa_access_key" {
 resource "azurerm_kubernetes_cluster" "k8s" {
     name                = "${var.aks_cluster_name}-${var.tags}"
     location            = var.location
-    resource_group_name = var.aks_rg_name
+    resource_group_name = "${var.aks_rg_name}-${var.tags}"
     dns_prefix          = "${var.dns_prefix}-${var.tags}"
-
-    depends_on = [
-      azurerm_resource_group.pipeline-aks-rg
-    ]
-    
 
     linux_profile {
         admin_username = "ubuntu"
