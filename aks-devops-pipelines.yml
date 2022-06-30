@@ -33,4 +33,5 @@ steps:
   displayName: Terraform Plan
   inputs:
     command: 'plan'
+    workingDirectory: '$(System.DefaultWorkingDirectory)/tf-infra'
     allowTelemetryCollection: false
