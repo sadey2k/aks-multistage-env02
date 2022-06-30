@@ -3,8 +3,8 @@
 # Add steps that build, run tests, deploy, and more:
 # https://aka.ms/yaml
 
-trigger:
-- main
+trigger: none
+
 
 pool: 'TestAgentPool'
   #vmImage: 
@@ -23,11 +23,13 @@ steps:
 #     allowTelemetryCollection: false
 
 - task: TerraformCLI@0
+  displayName: Terraform Init
   inputs:
     command: 'init'
     allowTelemetryCollection: false
 
 - task: TerraformCLI@0
+  displayName: Terraform Plan
   inputs:
     command: 'plan'
     allowTelemetryCollection: false
