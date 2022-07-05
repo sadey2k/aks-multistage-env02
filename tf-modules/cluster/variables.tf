@@ -6,8 +6,8 @@ variable "log_analytics_workspace_name" {
   default = "sadey2k-log-analytics-workspace"
 }
 
-variable log_analytics_workspace_sku {
-    default = "PerGB2018"
+variable "log_analytics_workspace_sku" {
+  default = "PerGB2018"
 }
 
 variable "aks_cluster_name" {
@@ -19,7 +19,7 @@ variable "dns_prefix" {
 }
 
 variable "agent_count" {
-    default = 2
+  default = 2
 }
 
 # variable "aks_service_principal_app_id" {
@@ -43,28 +43,29 @@ variable "kubernetes_version" {
 # }
 
 variable "tags" {
-  default = "QA"
-}
-
-variable "access_key" {
-  default = "backend-sa-access-key"
+  default = "DEVELOPMENT"
 }
 
 variable "keyvault_rg" {
-  default = "sadey2k-aksRG"
+  default = "kv-rg-DEVELOPMENT"
 }
+
 variable "keyvault_name" {
-  default = "sadey2kKV"
+  default = "keyvaultsade-DEVELOPMENT"
+}
+
+variable "access_key" {
+  default = "backend-sa-access-key-DEVELOPMENT"
 }
 
 variable "sshkvsecret" {
-  default = "aks-ssh-keysecret"
+  default = "aks-ssh-keysecret-DEVELOPMENT"
 }
 
-variable "clientidkvsecret" {
-  default = "aks-sp2-id"
+variable "clientidkv" {
+  default = "keyvault-sp-id-DEVELOPMENT"
 }
 
 variable "spnkvsecret" {
-  default = "aks-sp2-secret"
+  default = "keyvault-sp-secret-DEVELOPMENT"
 }
